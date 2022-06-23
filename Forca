@@ -1,0 +1,37 @@
+from os import system as sys
+sys('cls')
+
+letrasDigitadas = []
+palavraSecreta = list('FEDERAL')
+for c in palavraSecreta:
+    letrasDigitadas.append('_') 
+qtdChutes = 0
+listaChutes = []
+
+inicioPalavraSecreta = 'Palavra secreta: '
+for x in range(0, len(palavraSecreta)):
+    inicioPalavraSecreta = inicioPalavraSecreta + '_'
+print(inicioPalavraSecreta)
+print()
+
+while True:
+    chute = input('Chute uma letra: ').upper().strip()
+    if chute not in listaChutes:
+        listaChutes.append(chute)
+        qtdChutes += 1
+        if chute in palavraSecreta:
+            contador = 0
+            for i in palavraSecreta:
+                if chute == palavraSecreta[contador]:
+                    letrasDigitadas[contador] = chute
+                contador += 1
+            for j in letrasDigitadas:
+                print(j, end='')
+            print()
+            if letrasDigitadas == palavraSecreta:
+                print('Você ganhou!')
+                break
+        else:
+            print('Não existe essa letra na palavra secreta.')
+    else:
+        print('Você já chutou essa letra antes.')
